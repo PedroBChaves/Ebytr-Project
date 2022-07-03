@@ -1,14 +1,14 @@
 const connection = require('./connection');
 
 const getAllTasks = async () => {
-  const [tasks] = await connection.execute('SELECT * From Database.tasks');
+  const [tasks] = await connection.execute('SELECT * From TaskManager.tasks');
 
   return tasks;
 };
 
 const createTask = async (name, status) => {
   const [verify] = await connection
-    .execute('SELECT name FROM Database.tasks WHERE name = ?', [name]);
+    .execute('SELECT name FROM TaskManager.tasks WHERE name = ?', [name]);
 
   if (verify[0] !== undefined) {
     const e = JSON.stringify(
@@ -18,33 +18,33 @@ const createTask = async (name, status) => {
   }
 
   const [res] = await connection
-    .execute('INSERT INTO Database.tasks (name, status) VALUES (?, ?)', [name, status]);
+    .execute('INSERT INTO TaskManager.tasks (name, status) VALUES (?, ?)', [name, status]);
 
   return {
     id: res.insertId,
     name,
     status,
-    createdAt: res.createdAt,
-    updatedAt: res.updatedAt,
+    createdAt: res.created_at,
+    updatedAt: res.updated_at,
   };
 };
 
 const updateTask = async (id, name, status) => {
   const [res] = await connection
-    .execute('UPDATE Database.tasks SET (name, status) VALUES (?, ?)', [name, status]);
+    .execute('UPDATE TaskManager.tasks SET name = ?, status = ? WHERE id = ?', [name, status, id]);
 
   return {
     id,
     name,
     status,
-    createdAt: res.createdAt,
-    updatedAt: res.updatedAt,
+    createdAt: res.created_at,
+    updatedAt: res.updated_at,
   };
 };
 
 const deleteTask = async (id) => {
   await connection
-    .execute('DELETE FROM Database.tasks WHERE id = ?', [id]);
+    .execute('DELETE FROM TaskManager.tasks WHERE id = ?', [id]);
 };
 
 module.exports = {

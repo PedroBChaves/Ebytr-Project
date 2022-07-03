@@ -5,8 +5,7 @@ const getAllTasks = async (_req, res) => {
     const tasks = await tasksService.getAllTasks();
     return res.status(200).json(tasks);
   } catch (error) {
-    const e = JSON.parse(error.message);
-    return res.status(e.status).json({ message: e.message });
+    return res.status(500).json({ message: error.message });
   }
 };
 

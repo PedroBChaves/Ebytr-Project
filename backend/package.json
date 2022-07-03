@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.js"
+    "start": "nodemon ./src/index.js",
+    "restore": "node ./src/database/restoreDb"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +13,7 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "mysql-import": "^5.0.21",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
