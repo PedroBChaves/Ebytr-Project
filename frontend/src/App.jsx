@@ -1,4 +1,5 @@
-import Tasks from "./pages/Tasks";
+import React from 'react';
+import Tasks from './pages/Tasks';
 
 function App() {
   return (
