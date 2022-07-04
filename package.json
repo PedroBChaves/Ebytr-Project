@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "docker compose up -d --build",
-    "stop": "docker-compose down --remove-orphans",
-    "restore": "node ./backend/src/database/restoreDb"
+    "stop": "docker-compose down --remove-orphans"
   },
   "repository": {
     "type": "git",

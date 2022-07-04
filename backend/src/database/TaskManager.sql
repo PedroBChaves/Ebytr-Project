@@ -12,9 +12,4 @@ CREATE TABLE tasks (
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO TaskManager.tasks (name, status) VALUES
-  ('Varrer a casa', 'em andamento'),
-  ('Fazer almoço', 'pronto'),
-  ('Passear com cachorro', 'pendente');
-
 GRANT ALL PRIVILEGES ON database_name.TaskManager TO 'root'@'localhost';
