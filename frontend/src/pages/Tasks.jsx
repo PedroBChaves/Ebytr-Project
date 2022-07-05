@@ -98,11 +98,10 @@ export default class Tasks extends React.Component {
   };
 
   render() {
-    const { task, status, updating } = this.state;
+    const { task, updating } = this.state;
     return (
       <div>
         <h3>Insira sua tarefa:</h3>
-        {status}
         <div>
           <input
             type="text"
